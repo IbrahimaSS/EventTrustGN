@@ -1,0 +1,2180 @@
+1
+25. Module tableau de bord 
+24. Module PDF et documents numériques 
+23. Module QR Code et badges numériques 
+22. Module IA Gemini 
+21. Module paiement Lengo Pay 
+20. Module OTP et SMS 
+19. Modules fonctionnels détaillés 
+18. Parcours utilisateurs 
+17. Rôles et permissions 
+16. Authentification et inscription selon les profils 
+15. Landing page 
+14. Page publique institutionnelle 
+13. Répertoire national des institutions 
+12. Recherche institutionnelle intelligente 
+11. Fonctionnalités principales 
+10. Logo et charte graphique 
+9. Identité visuelle 
+8. Positionnement et différence avec les solutions existantes 
+7. Types d’événements pris en charge 
+6. Public cible 
+5. Objectifs du projet 
+4. Vision du projet 
+3. Problématique 
+2. Contexte et justification 
+1. Présentation générale du projet 
+Table des matières
+Version du document : Cahier des charges complet et dossier de conception 
+Pays cible : Guinée, avec possibilité d’extension à d’autres pays
+numériques, paiement mobile, IA
+Domaine : Événementiel institutionnel, publication officielle, inscription, vérification, badges
+Type de projet : Plateforme SaaS web institutionnelle
+Slogan : Publier, vérifier et participer aux événements officiels en toute confiance.
+Nom du projet : EventTrust GN
+Page de garde
+vérification et gestion des événements officiels
+Plateforme SaaS institutionnelle de publication, inscription,
+EventTrust GN
+DOCUMENT COMPLET DU PROJET
+----------------Page (0) Break----------------
+2
+• liée à un paiement si l’événement est payant ;
+• associée à un badge numérique ;
+• éventuellement ouverte aux inscriptions ;
+• modifiable avec historique ;
+• archivée ;
+• vérifiable par QR Code ;
+• consultable publiquement ;
+• liée à une institution identifiée ;
+• horodatée ;
+EventTrust GN propose donc une solution moderne dans laquelle chaque publication officielle est :
+l’archivage officiel ni la vérification publique.
+mais ils ne garantissent pas toujours l’authenticité de l’information, la traçabilité des modifications,
+sur Facebook, WhatsApp, des affiches, des PDF ou des sites web dispersés. Ces canaux sont pratiques,
+La plateforme répond à un besoin réel : aujourd’hui, beaucoup d’organisations publient leurs annonces
+les informations événementielles dans un espace fiable.
+générer des badges numériques, de vérifier l’authenticité des invitations par QR Code et de centraliser
+et organisations privées de publier officiellement leurs événements, d’ouvrir des inscriptions, de
+ONG, entreprises, centres de formation, fédérations sportives, associations, administrations publiques
+EventTrust GN est une plateforme SaaS institutionnelle permettant aux universités, écoles, instituts,
+1. Présentation générale du projet
+49. Prompt complet pour Claude Code 
+48. Conclusion 
+47. Perspectives d’évolution 
+46. Limites du MVP 
+45. Préparation de la soutenance 
+44. Documentation technique 
+43. Tests à prévoir 
+42. Scénario de démonstration 
+41. Fonctionnalités avancées 
+40. MVP recommandé 
+39. Plan de développement étape par étape 
+38. Variables d’environnement 
+37. Commandes de démarrage du projet 
+36. Design UX/UI des pages principales 
+35. Interfaces frontend à développer 
+34. Routes API REST 
+33. Collections MongoDB détaillées 
+32. Base de données MongoDB Atlas 
+31. Architecture frontend 
+30. Architecture backend Node.js Express 
+29. Choix frontend : React Vite ou Next.js 
+28. Architecture technique 
+27. Règles de gestion 
+26. Module sécurité et traçabilité 
+----------------Page (1) Break----------------
+3
+événementielles dans une plateforme fiable, moderne et accessible au public ?
+les inscriptions, de vérifier l’authenticité des annonces et de centraliser les informations
+Comment permettre aux institutions de publier officiellement leurs événements, de gérer
+La problématique principale est donc :
+les inscriptions, vérifier les invitations et conserver un historique fiable des publications.
+Les institutions ont besoin d’un espace numérique fiable pour publier leurs événements officiels, gérer
+3. Problématique
+institution peut publier ses événements de manière officielle, vérifiable et organisée.
+EventTrust GN répond à cette réalité en proposant un espace centralisé et professionnel où chaque
+• les participants ne disposent pas toujours d’une preuve numérique vérifiable.
+• les institutions ne disposent pas toujours de statistiques fiables ;
+• les inscriptions sont souvent mal suivies ;
+• les anciennes publications sont difficiles à retrouver ;
+• les informations peuvent être modifiées sans historique ;
+• les fausses annonces peuvent circuler ;
+• le public ne sait pas toujours quelle source est officielle ;
+Cette dispersion crée plusieurs difficultés :
+• messages informels.
+• appels téléphoniques ;
+• bouche-à-oreille ;
+• communiqués PDF ;
+• affiches physiques ;
+• pages web institutionnelles rarement mises à jour ;
+• groupes WhatsApp ;
+• publications Facebook ;
+Cependant, la diffusion de ces informations se fait souvent à travers plusieurs canaux non centralisés :
+sensibilisation, appels à candidature ou recrutements.
+forums, concours, compétitions, conférences, séminaires, cérémonies, ateliers, campagnes de
+Les institutions organisent régulièrement des événements importants : soutenances, formations,
+2. Contexte et justification
+• enrichie par une assistance IA avec Gemini.
+----------------Page (2) Break----------------
+4
+16. intégrer Gemini pour assister la rédaction, la classification et l’analyse ;
+15. envoyer des OTP et notifications SMS ;
+14. enregistrer les présences ;
+13. permettre aux agents de scanner les badges ;
+12. générer des badges numériques vérifiables ;
+11. intégrer un paiement mobile via Lengo Pay pour les événements payants ;
+10. permettre aux participants de s’inscrire aux événements ;
+9. permettre au public de vérifier l’authenticité d’une annonce ;
+8. générer un QR Code unique pour chaque événement publié ;
+7. associer automatiquement un horodatage à chaque publication ;
+6. permettre aux institutions de publier des événements officiels ;
+5. afficher les pages publiques des institutions ;
+4. proposer une recherche intelligente par nom, sigle, ville, quartier ou région ;
+3. créer un répertoire national des institutions connues ;
+2. permettre au Super Admin de valider les institutions ;
+1. permettre aux institutions de créer ou réclamer un espace officiel ;
+Le projet vise à :
+5.2 Objectifs spécifiques
+badges numériques, la vérification par QR Code, le paiement mobile et l’assistance par IA.
+archiver leurs événements officiels, tout en facilitant l’inscription des participants, la génération de
+Développer une plateforme SaaS permettant aux institutions de publier, horodater, gérer, vérifier et
+5.1 Objectif général
+5. Objectifs du projet
+La plateforme devient ainsi une passerelle entre les institutions et le public.
+9. être vérifié par un agent via QR Code.
+8. présenter ce badge à l’entrée ;
+7. recevoir un badge numérique ;
+6. payer si l’événement est payant ;
+5. s’inscrire à un événement ;
+4. vérifier une invitation ou un badge ;
+3. consulter ses événements publiés ;
+2. accéder à sa page officielle ;
+1. rechercher une institution depuis la landing page ;
+L’utilisateur doit pouvoir :
+vérification des événements institutionnels en Guinée.
+La vision d’EventTrust GN est de devenir une plateforme de référence pour la publication et la
+4. Vision du projet
+----------------Page (3) Break----------------
+5
+• visiteurs intéressés par les événements officiels.
+• membres de jury ;
+• parents ;
+• citoyens ;
+• chercheurs ;
+• enseignants ;
+• professionnels ;
+• sportifs ;
+• participants aux formations ;
+• invités ;
+• candidats ;
+• étudiants ;
+La plateforme s’adresse aussi à :
+6.2 Public général
+• institutions privées.
+• institutions publiques ;
+• organisations professionnelles ;
+• organisateurs de concours ;
+• fédérations sportives ;
+• associations ;
+• entreprises ;
+• ONG ;
+• mairies ;
+• ministères ;
+• centres de formation ;
+• instituts ;
+• écoles ;
+• universités ;
+EventTrust GN cible :
+6.1 Institutions
+6. Public cible
+20. produire des rapports PDF.
+19. conserver l’historique des modifications ;
+18. archiver automatiquement les événements terminés ;
+17. fournir des dashboards par rôle ;
+----------------Page (4) Break----------------
+6
+• concours artistiques.
+• tournois ;
+• compétitions scolaires ;
+• concours d’innovation ;
+• hackathons ;
+• compétitions sportives ;
+7.5 Compétitions
+• expositions.
+• rencontres institutionnelles ;
+• salons professionnels ;
+• forums jeunesse ;
+• forums économiques ;
+7.4 Forums et salons
+• examens spéciaux.
+• auditions ;
+• recrutements ;
+• tests de sélection ;
+• appels à candidature ;
+• concours d’entrée ;
+7.3 Concours
+• masterclass.
+• certifications ;
+• bootcamps ;
+• ateliers pratiques ;
+• formations professionnelles ;
+7.2 Formations
+• forums universitaires.
+• remises de diplômes ;
+• journées scientifiques ;
+• séminaires ;
+• conférences ;
+• soutenances ;
+7.1 Événements académiques
+catégories.
+EventTrust GN ne se limite pas à un seul domaine. La plateforme doit prendre en charge plusieurs
+7. Types d’événements pris en charge
+----------------Page (5) Break----------------
+7
+• la gestion multi-profils.
+• la génération de badges ;
+• l’assistance IA ;
+• l’archivage ;
+• la traçabilité ;
+• l’horodatage ;
+• le répertoire des institutions ;
+• la vérification publique par QR Code ;
+• la recherche institutionnelle intelligente ;
+La plateforme se distingue par :
+Pages dispersées  Recherche institutionnelle centralisée
+Peu d’historique publicHistorique des modifications et statuts officiels
+Ticket d’entrée  Annonce officielle, invitation, badge ou preuve d’inscription
+central
+Horodatage, vérification, inscription, archive, QR Code
+Paiement souvent
+officielles
+Concerts et spectacles
+Formations, concours, soutenances, forums, compétitions, annonces
+commerciale
+Orientation confiance, institution et traçabilité
+Orientation
+Vente de tickets  Publication officielle d’événements institutionnels
+Solutions classiquesEventTrust GN
+large et plus institutionnel.
+EventTrust GN ne doit pas être présenté comme une simple billetterie. Son positionnement est plus
+solutions existantes
+8. Positionnement et différence avec les
+• journées portes ouvertes.
+• réunions publiques ;
+• campagnes de sensibilisation ;
+• conférences de presse ;
+• cérémonies ;
+7.6 Événements institutionnels
+----------------Page (6) Break----------------
+8
+• bleu royal pour les boutons principaux, liens actifs, icônes fortes ;
+9.6 Utilisation visuelle
+Alternative : Poppins pour les titres et Inter pour les textes.
+Police recommandée : Inter
+9.5 Typographie
+• Accent doux :#EAF2FF
+• Bordure :#E2E8F0
+• Texte secondaire :#475569
+• Texte principal :#0F172A
+• Surface / carte :#FFFFFF
+• Fond général :#F8FAFC
+• Couleur secondaire : Bleu Nuit #0A1F44
+• Couleur primaire : Bleu Royal #0B5ED7
+9.4 Palette principale
+• professionnalisme.
+• digitalisation ;
+• vérification ;
+• institution ;
+• modernité ;
+• sécurité ;
+• confiance ;
+La marque doit transmettre :
+9.3 Style de marque
+Publier, vérifier et participer aux événements officiels en toute confiance.
+9.2 Slogan
+• GN : ancrage guinéen.
+• Trust : confiance, authenticité, vérification, sécurité ;
+• Event : événement, annonce, invitation, inscription ;
+Le nom combine deux idées fortes :
+EventTrust GN
+9.1 Nom
+9. Identité visuelle
+----------------Page (7) Break----------------
+9
+10. badges numériques ;
+9. paiement Lengo Pay ;
+8. inscriptions gratuites ou payantes ;
+7. QR Code de vérification ;
+6. historique des modifications ;
+5. horodatage automatique ;
+4. publication d’événements officiels ;
+3. page publique institutionnelle ;
+2. répertoire national des institutions ;
+1. recherche institutionnelle intelligente ;
+Les fonctionnalités principales de la plateforme sont :
+11. Fonctionnalités principales
+6. version PDF et document officiel.
+5. version sur fond sombre ;
+4. version sur fond clair ;
+3. version monochrome ;
+2. icône seule : favicon, app mobile, badge ;
+1. logo horizontal : icône + texte EventTrust GN ;
+Il faut prévoir :
+10.2 Versions nécessaires
+• Bleu nuit : sérieux, institution, stabilité.
+• Bleu royal : technologie, accessibilité, fiabilité ;
+• QR Code : digitalisation, preuve numérique, contrôle ;
+• Check : validation, vérification, authenticité ;
+• Bouclier : confiance, sécurité, protection ;
+10.1 Signification
+• un détail inspiré du QR Code.
+• un check ;
+• un bouclier ;
+Le logo retenu est basé sur :
+10. Logo et charte graphique
+• accent doux pour les zones de mise en avant.
+• gris très clair pour les arrière-plans ;
+• blanc pour les cartes ;
+• bleu nuit pour header, footer, sidebar et titres forts ;
+----------------Page (8) Break----------------
+10
+3. catégories correspondantes.
+2. événements correspondants ;
+1. institutions correspondantes ;
+Le système doit afficher :
+12.1 Résultats attendus
+• Formation IA.
+• Concours d’entrée ;
+• Forum numérique ;
+• FARANAH ;
+• N’ZEREKORE ;
+• KANKAN ;
+• ISSMV/D ;
+• ISIC ;
+• LABE ;
+• GAMAL ;
+• UKAG ;
+• UNC ;
+• IST ;
+Exemples de recherches :
+• une catégorie.
+• un événement ;
+• une région ;
+• un quartier ;
+• une ville ;
+• un sigle ;
+• une institution ;
+La landing page doit intégrer une grande barre de recherche permettant à tout visiteur de rechercher :
+12. Recherche institutionnelle intelligente
+20. sécurité par rôles.
+19. archivage ;
+18. rapports ;
+17. génération PDF ;
+16. dashboards par rôle ;
+15. assistance IA Gemini ;
+14. notifications SMS ;
+13. OTP SMS ;
+12. présence et contrôle d’accès ;
+11. scan QR Code ;
+----------------Page (9) Break----------------
+11
+• Université de Faranah ;
+• Université de N’Zérékoré ;
+• Université de Kankan ;
+• ISIC ;
+• ISSMV/D ;
+• Université de Labé ;
+• GAMAL ;
+• UKAG ;
+• UNC ;
+• IST ;
+13.1 Exemples d’institutions référencées
+région.
+Avant qu’une institution ne crée son espace, elle doit rechercher son nom, son sigle, sa ville ou sa
+Le répertoire institutionnel est une fonctionnalité centrale.
+13. Répertoire national des institutions
+• Vérifier une publication.
+• Voir les événements ;
+• Voir la page institution ;
+Le visiteur peut cliquer sur :
+12.3 Actions possibles
+• nombre d’événements à venir.
+• nombre d’événements publiés ;
+• statut : vérifiée, référencée, non vérifiée ;
+• page EventTrust GN si elle existe ;
+• page officielle si disponible ;
+• site web officiel si disponible ;
+• adresse ;
+• quartier ou district ;
+• commune ;
+• ville ;
+• région ;
+• pays ;
+• type ;
+• sigle ;
+• nom complet ;
+• logo ;
+Pour chaque institution trouvée, afficher :
+12.2 Informations affichées pour une institution
+----------------Page (10) Break----------------
+12
+Chaque institution validée doit avoir une page publique :
+14. Page publique institutionnelle
+POST /api/institutions/create-manual
+POST /api/institutions/request-access/:institutionId
+POST /api/institutions/claim-reference/:referenceId
+PATCH /api/institution-references/:id/verify
+POST /api/institution-references
+GET /api/institution-references/:id
+GET /api/institution-references/search?q=
+13.4 Routes API associées
+validation par Super Admin devient plus stricte.
+Si l’institution n’existe pas dans le répertoire, l’utilisateur peut soumettre une demande manuelle. La
+Cas 3 : Institution non référencée
+ou réclamer l’espace officiel.
+Si l’institution existe dans le répertoire mais n’a pas encore d’espace, l’utilisateur peut demander à créer
+Cas 2 : Institution référencée mais non inscrite
+demander à rejoindre l’espace.
+Si l’institution existe déjà sur EventTrust GN, l’utilisateur ne peut pas créer un doublon. Il peut
+Cas 1 : Institution déjà inscrite
+13.3 Cas à gérer
+Cette collection contient les institutions réellement inscrites et validées sur EventTrust GN.
+13.2.2 institutions
+EventTrust GN.
+Cette collection contient les institutions connues du pays, même si elles n’ont pas encore créé d’espace
+13.2.1 institution_references
+13.2 Deux collections à prévoir
+• autres institutions publiques ou privées.
+----------------Page (11) Break----------------
+13
+et professionnelle.
+La landing page est la porte d’entrée principale de la plateforme. Elle doit être riche, moderne, attirante
+15. Landing page
+• terminés.
+• soutenances ;
+• compétitions ;
+• forums ;
+• concours ;
+• formations ;
+• inscriptions ouvertes ;
+• à venir ;
+• tous ;
+La page institution doit permettre de filtrer par :
+14.2 Filtres d’événements
+• section de vérification d’une publication.
+• statistiques publiques ;
+• événements terminés ;
+• événements à venir ;
+• date d’inscription sur EventTrust GN ;
+• statut de vérification ;
+• page officielle ;
+• site web officiel ;
+• description ;
+• adresse ;
+• quartier ou district ;
+• commune ;
+• ville ;
+• région ;
+• pays ;
+• type d’institution ;
+• sigle ;
+• nom complet ;
+• logo ;
+La page doit afficher :
+14.1 Contenu de la page
+/institutions/:slug
+----------------Page (12) Break----------------
+14
+inscriptions, les badges numériques et la vérification par QR Code.
+Une plateforme horodatée pour centraliser les événements institutionnels, les
+Sous-titre :
+Publiez, vérifiez et participez aux événements officiels en toute confiance.
+Titre :
+15.4 Hero section
+• Publier un événement.
+• Connexion ;
+• À propos ;
+• Vérification ;
+• Institutions ;
+• Événements ;
+• Accueil ;
+Liens :
+15.3 Navbar
+13. Footer.
+12. CTA final ;
+11. Témoignage ;
+10. Institutions ciblées ;
+9. Pourquoi choisir EventTrust GN ;
+8. Vérification invitation ou badge ;
+7. Événements à la une ;
+6. Comment ça marche ;
+5. Catégories d’événements ;
+4. Statistiques ;
+3. Barre de recherche intelligente ;
+2. Hero section ;
+1. Navbar ;
+15.2 Sections de la landing page
+• comment consulter les événements.
+• comment rechercher une institution ;
+• comment vérifier une publication ;
+• quelles institutions peuvent l’utiliser ;
+• à quoi sert la plateforme ;
+• ce qu’est EventTrust GN ;
+Elle doit permettre au visiteur de comprendre rapidement :
+15.1 Objectif
+----------------Page (13) Break----------------
+15
+• QR Code exemple.
+• aperçu d’une publication authentique ;
+• bouton Vérifier ;
+• champ de code unique ;
+Contenu :
+Vérifier une invitation ou un badge
+Section :
+15.8 Vérification
+• Séminaires.
+• Appels à candidature ;
+• Conférences ;
+• Compétitions ;
+• Concours ;
+• Forums ;
+• Formations ;
+• Soutenances ;
+15.7 Catégories
+• 98% taux de confiance.
+• 35 000 inscriptions ;
+• 1 200 événements publiés ;
+• 250+ institutions ;
+Exemples de statistiques affichées :
+15.6 Statistiques
+Ex : IST Mamou, UNC, ISIC, Formation IA, Concours, Forum...
+Placeholder :
+Rechercher une institution, un événement, une ville ou une catégorie...
+Champ :
+15.5 Recherche intelligente dans le hero
+• Créer un espace institutionnel.
+• Découvrir les événements ;
+Boutons :
+----------------Page (14) Break----------------
+16
+Gestionnaire d’Inscriptions/institution/registrations
+Responsable Communication/institution/events
+Admin Institution   /institution/dashboard
+Super Admin       /admin/dashboard
+Rôle             Redirection
+16.3 Redirection après login
+• mot de passe oublié.
+• se souvenir de moi ;
+Options :
+• mot de passe.
+• email ou numéro de téléphone ;
+Champs :
+• formulaire de connexion dans une carte blanche.
+À droite :
+• avantages rapides.
+• illustration QR Code, badge, institution, dashboard ;
+• phrase forte ;
+• logo EventTrust GN ;
+À gauche :
+16.2 Structure de la page Login
+• Participant.
+• Agent de Contrôle ;
+• Gestionnaire d’Inscriptions ;
+• Responsable Communication ;
+• Admin Institution ;
+• Super Admin ;
+Profils concernés :
+La page Login est unique pour tous les profils.
+16.1 Page Login
+profils
+16. Authentification et inscription selon les
+----------------Page (15) Break----------------
+17
+Parcours :
+• acceptation des conditions.
+• confirmer mot de passe ;
+• mot de passe ;
+• numéro de téléphone ;
+• email ;
+• nom complet ;
+Champs :
+16.5 Register Participant
+Créer un espace institutionnel
+Bouton :
+Je représente une institution ou une organisation.
+Texte :
+Choix 2 : Institution
+Créer un compte participant
+Bouton :
+Je veux participer à des événements.
+Texte :
+Choix 1 : Participant
+La page Register commence par un choix de type de compte.
+16.4 Page Register
+/institution/pending
+Si l’institution est encore en attente de validation :
+Participant       /participant/dashboard
+Agent de Contrôle   /agent/scan
+Rôle             Redirection
+----------------Page (16) Break----------------
+18
+Votre demande est en cours de validation.
+La page affichée :
+pending
+Après validation OTP, l’institution passe au statut :
+Étape 5 : Attente validation
+Le responsable reçoit un code OTP par SMS.
+Étape 4 : Vérification OTP
+• description courte.
+• logo ;
+• page officielle ;
+• site web ;
+• téléphone officiel ;
+• email officiel ;
+• adresse ;
+• quartier ;
+• ville ;
+• type ;
+• nom de l’institution ;
+Étape 3 : Informations de l’institution
+• confirmer mot de passe.
+• mot de passe ;
+• numéro de téléphone ;
+• email professionnel ;
+• fonction ;
+• nom complet ;
+Étape 2 : Informations du responsable
+L’utilisateur recherche son institution dans le répertoire.
+Étape 1 : Rechercher l’institution
+L’inscription institution se fait en plusieurs étapes.
+16.6 Register Institution
+→ Dashboard Participant
+→ Vérification téléphone
+→ Envoi OTP SMS
+Register Participant
+----------------Page (17) Break----------------
+19
+• utiliser Gemini.
+• archiver ;
+• annuler ;
+• reporter ;
+• publier officiellement ;
+• modifier les publications ;
+• créer les publications ;
+Permissions :
+17.3 Responsable Communication
+• consulter les statistiques.
+• superviser les publications ;
+• attribuer les rôles ;
+• ajouter des membres ;
+• gérer son institution ;
+Permissions :
+17.2 Admin Institution
+• gérer le répertoire institutionnel.
+• consulter les logs ;
+• surveiller les paiements ;
+• gérer les utilisateurs ;
+• consulter les statistiques globales ;
+• gérer les catégories ;
+• suspendre les institutions ;
+• valider les institutions ;
+• gérer toute la plateforme ;
+Permissions :
+17.1 Super Admin
+17. Rôles et permissions
+Ils sont créés ou invités par l’Admin Institution.
+• Admin Institution secondaire.
+• Agent de Contrôle ;
+• Gestionnaire d’Inscriptions ;
+• Responsable Communication ;
+Les profils suivants ne s’inscrivent pas publiquement :
+16.7 Création des autres profils
+----------------Page (18) Break----------------
+20
+3. Il consulte la page institutionnelle.
+2. Il recherche une institution ou un événement.
+1. Le visiteur arrive sur la landing page.
+18.1 Parcours visiteur public
+18. Parcours utilisateurs
+• vérifier un badge.
+• vérifier une publication ;
+• rechercher une institution ;
+• consulter les événements publics ;
+Permissions :
+17.7 Public Visiteur
+• consulter ses inscriptions.
+• télécharger son badge ;
+• payer ;
+• s’inscrire ;
+• consulter les événements ;
+• vérifier son téléphone ;
+• créer un compte ;
+Permissions :
+17.6 Participant
+• voir l’historique des scans.
+• valider les présences ;
+• vérifier les QR Codes ;
+• scanner les badges ;
+Permissions :
+17.5 Agent de Contrôle
+• exporter les listes.
+• générer les badges ;
+• suivre les paiements ;
+• valider ou refuser ;
+• consulter les inscriptions ;
+Permissions :
+17.4 Gestionnaire d’Inscriptions
+----------------Page (19) Break----------------
+21
+7. La présence est enregistrée si le badge est valide.
+6. Le résultat s’affiche.
+5. Le système vérifie le badge.
+4. Il scanne le QR Code du badge.
+3. Il active la caméra.
+2. Il ouvre l’interface de scan.
+1. L’agent se connecte.
+18.4 Parcours agent
+9. Sa présence est enregistrée.
+8. L’agent scanne le badge.
+7. Il présente le QR Code à l’entrée.
+6. Il reçoit son badge numérique.
+5. Si l’événement est payant, il paie via Lengo Pay.
+4. Il s’inscrit à l’événement.
+3. Il vérifie son téléphone.
+2. Il crée un compte.
+1. Le participant consulte un événement.
+18.3 Parcours participant
+11. Le public peut consulter et s’inscrire.
+10. Le système génère le QR Code.
+9. Il publie officiellement l’événement.
+8. Il crée une publication.
+7. Il invite les membres de son institution.
+6. Après validation, il accède au dashboard.
+5. Il attend la validation Super Admin.
+4. Il vérifie son téléphone par OTP.
+3. Il saisit ses informations.
+2. Il réclame ou crée l’espace institutionnel.
+1. Le responsable recherche son institution.
+18.2 Parcours institution
+10. Il reçoit son badge ou continue vers le paiement.
+9. Il valide son téléphone.
+8. Il reçoit un OTP.
+7. Il crée un compte participant.
+6. Il s’inscrit si nécessaire.
+5. Il vérifie les informations officielles.
+4. Il ouvre un événement.
+----------------Page (20) Break----------------
+22
+• vérification par Super Admin.
+• création manuelle ;
+• affichage du statut ;
+• recherche par région ;
+• recherche par ville ;
+• recherche par alias ;
+• recherche par sigle ;
+• recherche par nom ;
+Fonctionnalités :
+19.3 Module Répertoire
+• statistiques.
+• membres internes ;
+• page publique ;
+• logo ;
+• modification ;
+• suspension ;
+• validation par Super Admin ;
+• demande de rattachement ;
+• réclamation d’institution référencée ;
+• création institution ;
+Fonctionnalités :
+19.2 Module Institutions
+• middleware rôle.
+• middleware auth ;
+• modification profil ;
+• profil utilisateur ;
+• déconnexion ;
+• OTP téléphone ;
+• mot de passe oublié ;
+• refresh token si nécessaire ;
+• JWT ;
+• connexion ;
+• inscription ;
+Fonctionnalités :
+19.1 Module Authentification
+19. Modules fonctionnels détaillés
+----------------Page (21) Break----------------
+23
+• vérification publique.
+• affichage mobile ;
+• téléchargement PDF ;
+• statut badge ;
+• QR Code badge ;
+• génération badge ;
+Fonctionnalités :
+19.7 Module Badges
+• génération badge après paiement.
+• confirmation d’inscription ;
+• reçu ;
+• webhook ;
+• statut paiement ;
+• paiement via Lengo Pay ;
+Fonctionnalités :
+19.6 Module Paiement
+• génération numéro d’inscription.
+• prévention des doublons ;
+• limitation des places ;
+• validation automatique ou manuelle ;
+• inscription payante ;
+• inscription gratuite ;
+• formulaire d’inscription ;
+Fonctionnalités :
+19.5 Module Inscriptions
+• logs.
+• archivage ;
+• clôture inscriptions ;
+• annulation ;
+• report ;
+• modification ;
+• génération QR Code ;
+• génération code unique ;
+• horodatage ;
+• publication officielle ;
+• création en brouillon ;
+Fonctionnalités :
+19.4 Module Événements
+----------------Page (22) Break----------------
+24
+8. L’OTP devient utilisé.
+7. Le téléphone devient vérifié.
+6. Le backend vérifie le code.
+5. L’utilisateur saisit le code.
+4. Le SMS est envoyé via sms.service.js.
+3. L’OTP est stocké avec expiration.
+2. Le backend génère un OTP.
+1. L’utilisateur saisit son numéro.
+20.3 Fonctionnement
+• notification importante.
+• activation membre institution ;
+• confirmation de téléphone ;
+• récupération de mot de passe ;
+• vérification de compte ;
+20.2 Cas d’utilisation
+Le module OTP permet de vérifier les numéros de téléphone et de sécuriser certaines actions.
+20.1 Objectifs
+20. Module OTP et SMS
+• recommandations.
+• analyse statistiques ;
+• génération SMS ;
+• suggestion catégorie ;
+• résumé ;
+• génération d’annonce ;
+• amélioration description ;
+Fonctionnalités :
+19.9 Module Gemini IA
+• historique scan.
+• présence ;
+• détection badge déjà utilisé ;
+• vérification événement ;
+• vérification badge ;
+• scan caméra ;
+Fonctionnalités :
+19.8 Module Scan
+----------------Page (23) Break----------------
+25
+10. Un SMS peut être envoyé au participant.
+9. Le badge est généré.
+8. L’inscription est confirmée.
+7. Le statut payment passe à success.
+6. Lengo Pay notifie le backend via webhook.
+5. Le participant confirme le paiement.
+4. Le paiement est initié via Lengo Pay.
+3. Le backend crée une transaction Payment.
+2. Le système détecte que l’événement est payant.
+1. Le participant s’inscrit.
+21.3 Fonctionnement
+• certifications payantes.
+• compétitions payantes ;
+• concours payants ;
+• forums payants ;
+• formations payantes ;
+21.2 Cas d’utilisation
+Permettre aux participants de payer les événements payants via mobile money.
+21.1 Objectif
+21. Module paiement Lengo Pay
+• messages clairs.
+• logs ;
+• limitation du renvoi ;
+• limitation des tentatives ;
+• expiration après quelques minutes ;
+20.5 Règles
+• mode développement avec console.log.
+• fournisseur local ;
+• Orange SMS ;
+• Infobip ;
+• Termii ;
+• Twilio ;
+Le service doit être abstrait afin de pouvoir brancher :
+20.4 Fournisseurs prévus
+----------------Page (24) Break----------------
+26
+AITextAssistant.jsx
+AIRequest.js
+ai.routes.js
+ai.controller.js
+gemini.service.js
+22.3 Fichiers à prévoir
+8. Donner des recommandations pour améliorer la participation.
+7. Analyser les statistiques d’un événement ;
+6. Reformuler un texte institutionnel ;
+5. Générer un message SMS ;
+4. Suggérer une catégorie ;
+3. Générer un résumé court ;
+2. Générer une annonce professionnelle ;
+1. Améliorer la description d’un événement ;
+22.2 Fonctionnalités IA
+professionnelles et analyser leurs données.
+Gemini est intégré comme assistant intelligent pour aider les institutions à créer des publications
+22.1 Objectif
+22. Module IA Gemini
+une intégration mock puis brancher l’API réelle plus tard.
+Si la documentation officielle Lengo Pay n’est pas disponible au moment du développement, prévoir
+lengoPay.service.js
+L’intégration doit être abstraite dans :
+21.5 Important
+• expired.
+• cancelled ;
+• failed ;
+• success ;
+• pending ;
+21.4 Statuts paiement
+----------------Page (25) Break----------------
+27
+• QR Code invalide.
+• mauvais événement ;
+• inscription non confirmée ;
+• badge annulé ;
+• badge déjà utilisé ;
+• badge valide ;
+23.4 Résultats scan
+• cancelled.
+• used ;
+• valid ;
+23.3 Statuts badge
+• URL de vérification.
+• ID événement ;
+• code badge ;
+• type : badge ;
+Chaque badge participant reçoit un QR Code contenant :
+23.2 QR Code badge
+http://localhost:5173/verify/event/EVT-2026-00045
+Exemple local :
+• signature simple si nécessaire.
+• URL de vérification ;
+• code unique ;
+• type : event ;
+Chaque événement publié reçoit un QR Code contenant :
+23.1 QR Code événement
+23. Module QR Code et badges numériques
+• ne pas exposer la clé API Gemini au frontend.
+• limiter l’utilisation ;
+• journaliser les requêtes ;
+• protéger les routes IA ;
+22.4 Règles
+----------------Page (26) Break----------------
+28
+• taux de participation ;
+• présences ;
+• paiements ;
+• inscriptions ;
+• événements actifs ;
+• événements publiés ;
+Indicateurs :
+25.2 Dashboard Institution
+• catégories populaires.
+• logs ;
+• inscriptions ;
+• paiements ;
+• utilisateurs ;
+• événements publiés ;
+• institutions en attente ;
+• nombre d’institutions ;
+Indicateurs :
+25.1 Dashboard Super Admin
+25. Module tableau de bord
+• statut.
+• QR Code ;
+• code badge ;
+• lieu ;
+• date ;
+• titre événement ;
+• nom participant ;
+• logo institution ;
+• logo EventTrust GN ;
+24.2 Contenu du badge PDF
+• reçu de paiement.
+• liste des inscrits ;
+• rapport PDF événement ;
+• invitation PDF ;
+• badge PDF ;
+24.1 Documents à générer
+24. Module PDF et documents numériques
+----------------Page (27) Break----------------
+29
+• modification événement ;
+• publication événement ;
+• création événement ;
+• validation institution ;
+• création institution ;
+Actions journalisées :
+26.2 Traçabilité
+• vérification institutionnelle.
+• séparation des permissions ;
+• logs des actions importantes ;
+• rate limiting ;
+• contrôle des fichiers uploadés ;
+• validation des données ;
+• middleware de rôles ;
+• protection des routes ;
+• authentification JWT ;
+• hachage des mots de passe avec bcrypt ;
+Mesures prévues :
+26.1 Sécurité
+26. Module sécurité et traçabilité
+• badges refusés.
+• présences enregistrées ;
+• derniers scans ;
+• scanner badge ;
+Indicateurs :
+25.4 Dashboard Agent
+• événements à venir.
+• événements recommandés ;
+• mes paiements ;
+• mes badges ;
+• mes inscriptions ;
+Indicateurs :
+25.3 Dashboard Participant
+• statistiques par catégorie.
+• événements populaires ;
+----------------Page (28) Break----------------
+30
+• Recharts ;
+• qrcode.react ;
+• html5-qrcode ;
+• React Hook Form ;
+• Axios ;
+• React Router DOM ;
+• Tailwind CSS ;
+• Vite ;
+• React.js ;
+Frontend :
+28.1 Stack recommandée
+28. Architecture technique
+20. Les événements terminés peuvent être archivés.
+19. Une institution non référencée doit être validée manuellement.
+18. Une institution référencée peut être réclamée.
+17. Une institution déjà inscrite ne doit pas être dupliquée.
+16. Les routes doivent être protégées par rôle.
+15. Les données sensibles ne doivent jamais être renvoyées au frontend.
+14. Les tentatives OTP sont limitées.
+13. Les OTP expirent après quelques minutes.
+12. Le public peut vérifier un événement ou un badge sans compte.
+11. Un agent ne peut scanner que les badges des événements de son institution.
+10. Un badge déjà utilisé ne doit pas être réutilisé.
+9. Un badge ne doit pas être généré si l’inscription n’est pas acceptée ou payée.
+8. Un événement payant nécessite un paiement réussi avant confirmation.
+7. Le nombre de participants acceptés ne doit pas dépasser maxParticipants.
+6. Un participant ne peut pas s’inscrire deux fois au même événement.
+5. Chaque modification importante doit être enregistrée.
+4. Chaque événement publié doit avoir un QR Code.
+3. Chaque événement publié doit avoir un code unique.
+2. Un événement publié ne doit pas être supprimé définitivement.
+1. Une institution doit être validée avant de publier.
+27. Règles de gestion
+• utilisation IA.
+• génération badge ;
+• scan ;
+• paiement ;
+• inscription ;
+• annulation ;
+• report ;
+----------------Page (29) Break----------------
+31
+• besoin de gérer les meta tags côté client.
+• SEO moins fort qu’un rendu serveur ;
+Limites :
+• structure claire.
+• facile à connecter à Express ;
+• parfait pour dashboards ;
+• idéal pour une soutenance ;
+• rapide ;
+• simple à démarrer ;
+Avantages :
+29.1 React Vite
+29. Choix frontend : React Vite ou Next.js
+• MongoDB Atlas.
+• Cloudinary ;
+• Gemini API ;
+• SMS Provider ;
+• Lengo Pay ;
+Services externes :
+• Express Rate Limit.
+• Morgan ;
+• Helmet ;
+• Axios ;
+• PDFKit ;
+• QRCode ;
+• Cloudinary ;
+• Multer ;
+• Bcrypt ;
+• JWT ;
+• Mongoose ;
+• MongoDB Atlas ;
+• Express.js ;
+• Node.js ;
+Backend :
+• Lucide React.
+• Framer Motion ;
+----------------Page (30) Break----------------
+32
+│   │   ├── Scan.js
+│   │   ├── Badge.js
+│   │   ├── Payment.js
+│   │   ├── Registration.js
+│   │   ├── Event.js
+│   │   ├── Category.js
+│   │   ├── InstitutionAccessRequest.js
+│   │   ├── Institution.js
+│   │   ├── InstitutionReference.js
+│   │   ├── OTP.js
+│   │   ├── User.js
+│   ├── models/
+│   │   └── sms.js
+│   │   ├── gemini.js
+│   │   ├── lengoPay.js
+│   │   ├── cloudinary.js
+│   │   ├── env.js
+│   │   ├── db.js
+│   ├── config/
+├── src/
+backend/
+30. Architecture backend Node.js Express
+Express séparé.
+Ce choix est plus adapté à une soutenance et à un développement étape par étape avec backend
+React.js avec Vite + Tailwind CSS
+Pour une première version réaliste, claire et rapide à développer, le choix recommandé est :
+29.3 Recommandation
+• demande plus de rigueur.
+• risque de ralentir le développement ;
+• plus complexe ;
+Limites :
+• bon pour pages publiques.
+• rendu serveur possible ;
+• routes intégrées ;
+• meilleur SEO ;
+Avantages :
+29.2 Next.js
+----------------Page (31) Break----------------
+33
+│   │   ├── gemini.service.js
+│   │   ├── lengoPay.service.js
+│   │   ├── cloudinary.service.js
+│   │   ├── pdf.service.js
+│   │   ├── qrcode.service.js
+│   │   ├── otp.service.js
+│   │   ├── sms.service.js
+│   ├── services/
+│   │   └── rateLimit.middleware.js
+│   │   ├── upload.middleware.js
+│   │   ├── validate.middleware.js
+│   │   ├── error.middleware.js
+│   │   ├── role.middleware.js
+│   │   ├── auth.middleware.js
+│   ├── middlewares/
+│   │   └── search.routes.js
+│   │   ├── notification.routes.js
+│   │   ├── ai.routes.js
+│   │   ├── dashboard.routes.js
+│   │   ├── scan.routes.js
+│   │   ├── badge.routes.js
+│   │   ├── payment.routes.js
+│   │   ├── registration.routes.js
+│   │   ├── event.routes.js
+│   │   ├── category.routes.js
+│   │   ├── user.routes.js
+│   │   ├── institution.routes.js
+│   │   ├── institutionReference.routes.js
+│   │   ├── otp.routes.js
+│   │   ├── auth.routes.js
+│   ├── routes/
+│   │   └── search.controller.js
+│   │   ├── notification.controller.js
+│   │   ├── ai.controller.js
+│   │   ├── dashboard.controller.js
+│   │   ├── scan.controller.js
+│   │   ├── badge.controller.js
+│   │   ├── payment.controller.js
+│   │   ├── registration.controller.js
+│   │   ├── event.controller.js
+│   │   ├── category.controller.js
+│   │   ├── user.controller.js
+│   │   ├── institution.controller.js
+│   │   ├── institutionReference.controller.js
+│   │   ├── otp.controller.js
+│   │   ├── auth.controller.js
+│   ├── controllers/
+│   │   └── AIRequest.js
+│   │   ├── Log.js
+│   │   ├── Notification.js
+----------------Page (32) Break----------------
+34
+│   │   ├── institutionReference.service.js
+│   │   ├── institution.service.js
+│   │   ├── event.service.js
+│   │   ├── auth.service.js
+│   │   ├── api.js
+│   ├── services/
+│   │   └── AppRoutes.jsx
+│   ├── routes/
+│   │   └── agent/
+│   │   ├── participant/
+│   │   ├── institution/
+│   │   ├── super-admin/
+│   │   ├── auth/
+│   │   ├── public/
+│   ├── pages/
+│   │   └── institution/
+│   │   ├── payment/
+│   │   ├── ai/
+│   │   ├── qr/
+│   │   ├── dashboard/
+│   │   ├── forms/
+│   │   ├── cards/
+│   │   ├── layout/
+│   │   ├── common/
+│   ├── components/
+│   ├── assets/
+├── src/
+frontend/
+31. Architecture frontend
+└── README.md
+├── package.json
+├── .env.example
+├── .env
+├── uploads/
+│   └── server.js
+│   ├── app.js
+│   │   └── validators.js
+│   │   ├── asyncHandler.js
+│   │   ├── apiResponse.js
+│   │   ├── generateSlug.js
+│   │   ├── generateCode.js
+│   ├── utils/
+│   │   └── log.service.js
+│   │   ├── notification.service.js
+----------------Page (33) Break----------------
+35
+• ai_requests.
+• logs ;
+• notifications ;
+• scans ;
+• badges ;
+• payments ;
+• registrations ;
+• events ;
+• categories ;
+• institution_access_requests ;
+• institutions ;
+• institution_references ;
+• otps ;
+• users ;
+Collections principales :
+La base de données sera hébergée sur MongoDB Atlas et manipulée avec Mongoose.
+32. Base de données MongoDB Atlas
+└── README.md
+├── tailwind.config.js
+├── package.json
+├── .env
+│   └── main.jsx
+│   ├── App.jsx
+│   │   └── index.css
+│   ├── styles/
+│   ├── constants/
+│   ├── utils/
+│   ├── hooks/
+│   │   └── AuthContext.jsx
+│   ├── context/
+│   │   └── ai.service.js
+│   │   ├── search.service.js
+│   │   ├── scan.service.js
+│   │   ├── payment.service.js
+│   │   ├── registration.service.js
+----------------Page (34) Break----------------
+36
+websiteUrl:String,
+logoUrl:String,
+address:String,
+district:String,
+commune:String,
+city:String,
+region:String,
+country:String,
+type:String,
+aliases:[String],
+acronym:String,
+name:String,
+{
+33.3 institution_references
+}
+createdAt:Date
+used:Boolean,
+attempts:Number,
+expiresAt:Date,
+purpose:String,
+codeHash:String,
+phone:String,
+{
+33.2 otps
+}
+updatedAt:Date
+createdAt:Date,
+lastLoginAt:Date,
+avatar:String,
+isActive:Boolean,
+isPhoneVerified:Boolean,
+institutionId:ObjectId,
+role:String,
+passwordHash:String,
+phone:String,
+email:String,
+fullName:String,
+{
+33.1 users
+33. Collections MongoDB détaillées
+----------------Page (35) Break----------------
+37
+message:String,
+email:String,
+phone:String,
+function:String,
+fullName:String,
+requesterId:ObjectId,
+institutionId:ObjectId,
+{
+33.5 institution_access_requests
+}
+updatedAt:Date
+createdAt:Date,
+approvedAt:Date,
+approvedBy:ObjectId,
+createdBy:ObjectId,
+isVerified:Boolean,
+status:String,
+eventTrustPageSlug:String,
+description:String,
+officialPageUrl:String,
+websiteUrl:String,
+logoUrl:String,
+phone:String,
+email:String,
+address:String,
+district:String,
+commune:String,
+city:String,
+region:String,
+country:String,
+type:String,
+acronym:String,
+name:String,
+referenceId:ObjectId,
+{
+33.4 institutions
+}
+updatedAt:Date
+createdAt:Date,
+eventTrustInstitutionId:ObjectId,
+isVerifiedReference:Boolean,
+source:String,
+description:String,
+officialPageUrl:String,
+----------------Page (36) Break----------------
+38
+updatedBy:ObjectId,
+createdBy:ObjectId,
+publishedAt:Date,
+qrCodeData:String,
+publicationCode:String,
+status:String,
+contactInfo:String,
+requiredDocuments:[String],
+conditions:String,
+registrationDeadline:Date,
+paymentRequired:Boolean,
+currency:String,
+price:Number,
+registrationType:String,
+registrationRequired:Boolean,
+maxParticipants:Number,
+imageUrl:String,
+endTime:String,
+startTime:String,
+endDate:Date,
+startDate:Date,
+location:String,
+city:String,
+description:String,
+slug:String,
+title:String,
+categoryId:ObjectId,
+institutionId:ObjectId,
+{
+33.7 events
+}
+createdAt:Date
+isActive:Boolean,
+icon:String,
+description:String,
+slug:String,
+name:String,
+{
+33.6 categories
+}
+createdAt:Date
+reviewedAt:Date,
+reviewedBy:ObjectId,
+status:String,
+----------------Page (37) Break----------------
+39
+status:String,
+qrCodeData:String,
+badgeCode:String,
+participantId:ObjectId,
+registrationId:ObjectId,
+eventId:ObjectId,
+{
+33.10 badges
+}
+createdAt:Date
+paidAt:Date,
+rawResponse:Object,
+paymentMethod:String,
+phone:String,
+status:String,
+providerReference:String,
+provider:String,
+currency:String,
+amount:Number,
+registrationId:ObjectId,
+eventId:ObjectId,
+userId:ObjectId,
+{
+33.9 payments
+}
+validatedAt:Date
+validatedBy:ObjectId,
+registeredAt:Date,
+paymentId:ObjectId,
+paymentStatus:String,
+submittedData:Object,
+status:String,
+registrationNumber:String,
+participantId:ObjectId,
+eventId:ObjectId,
+{
+33.8 registrations
+}
+updatedAt:Date
+createdAt:Date,
+----------------Page (38) Break----------------
+40
+}
+createdAt:Date
+ipAddress:String,
+description:String,
+newValue:Object,
+oldValue:Object,
+action:String,
+eventId:ObjectId,
+institutionId:ObjectId,
+userId:ObjectId,
+{
+33.13 logs
+}
+createdAt:Date
+metadata:Object,
+status:String,
+channel:String,
+message:String,
+title:String,
+type:String,
+userId:ObjectId,
+{
+33.12 notifications
+}
+scannedAt:Date
+message:String,
+scanResult:String,
+agentId:ObjectId,
+eventId:ObjectId,
+badgeId:ObjectId,
+{
+33.11 scans
+}
+createdAt:Date
+usedAt:Date,
+----------------Page (39) Break----------------
+41
+PATCH /api/institution-references/:id/verify
+POST /api/institution-references
+GET /api/institution-references/:id
+GET /api/institution-references/search?q=
+34.4 Répertoire institutions
+GET /api/search?q=
+34.3 Recherche globale
+POST /api/otp/verify
+POST /api/otp/send
+34.2 OTP
+POST /api/auth/reset-password
+POST /api/auth/forgot-password
+GET /api/auth/me
+POST /api/auth/logout
+POST /api/auth/login
+POST /api/auth/register
+34.1 Auth
+34. Routes API REST
+}
+createdAt:Date
+metadata:Object,
+response:String,
+prompt:String,
+type:String,
+institutionId:ObjectId,
+userId:ObjectId,
+{
+33.14 ai_requests
+----------------Page (40) Break----------------
+42
+PATCH /api/events/:id/cancel
+PATCH /api/events/:id/postpone
+PATCH /api/events/:id/publish
+PUT /api/events/:id
+GET /api/events/code/:code
+GET /api/events/:id
+GET /api/events
+POST /api/events
+34.9 Events
+DELETE /api/categories/:id
+PUT /api/categories/:id
+GET /api/categories
+POST /api/categories
+34.8 Categories
+PATCH /api/users/:id/status
+PATCH /api/users/:id/role
+GET /api/users/:id
+GET /api/users
+34.7 Users
+GET /api/public/institutions/:slug/events
+GET /api/public/institutions/:slug
+GET /api/public/institutions
+34.6 Public institutions
+POST /api/institutions/create-manual
+POST /api/institutions/request-access/:institutionId
+POST /api/institutions/claim-reference/:referenceId
+PUT /api/institutions/:id
+PATCH /api/institutions/:id/suspend
+PATCH /api/institutions/:id/reject
+PATCH /api/institutions/:id/approve
+GET /api/institutions/:id
+GET /api/institutions
+POST /api/institutions
+34.5 Institutions
+----------------Page (41) Break----------------
+43
+GET /api/dashboard/institution
+GET /api/dashboard/super-admin
+34.15 Dashboard
+GET /api/verify/badge/:code
+GET /api/verify/event/:code
+34.14 Verification
+GET /api/events/:id/scans
+POST /api/scan/badge
+34.13 Scan
+GET /api/verify/badge/:code
+GET /api/badges/:id/pdf
+GET /api/badges/:id
+GET /api/badges/me
+34.12 Badges
+GET /api/payments/me
+POST /api/payments/lengo/webhook
+GET /api/payments/:id
+POST /api/payments/initiate
+34.11 Payments
+PATCH /api/registrations/:id/cancel
+PATCH /api/registrations/:id/reject
+PATCH /api/registrations/:id/accept
+GET /api/registrations/:id
+GET /api/registrations/me
+GET /api/events/:id/registrations
+POST /api/events/:id/register
+34.10 Registrations
+PATCH /api/events/:id/archive
+PATCH /api/events/:id/close-registrations
+----------------Page (42) Break----------------
+44
+9. Institution pending.
+8. Réinitialisation mot de passe ;
+7. Mot de passe oublié ;
+6. Vérification OTP ;
+5. Recherche institution avant inscription ;
+4. Register institution ;
+3. Register participant ;
+2. Register choix profil ;
+1. Login ;
+35.2 Pages Auth
+9. Contact.
+8. À propos ;
+7. Événements d’une institution ;
+6. Page institution publique ;
+5. Liste publique des institutions ;
+4. Vérification QR Code / code unique ;
+3. Détail événement ;
+2. Liste des événements ;
+1. Landing Page ;
+35.1 Pages publiques
+35. Interfaces frontend à développer
+PATCH /api/notifications/:id/read
+GET /api/notifications
+34.17 Notifications
+POST /api/ai/analyze-event-stats
+POST /api/ai/generate-sms
+POST /api/ai/suggest-category
+POST /api/ai/generate-summary
+POST /api/ai/improve-description
+34.16 AI
+GET /api/dashboard/agent
+GET /api/dashboard/participant
+----------------Page (43) Break----------------
+45
+4. Historique scans.
+3. Résultat scan ;
+2. Scanner badge ;
+1. Dashboard agent ;
+35.6 Agent
+6. Profil.
+5. Mes paiements ;
+4. Mes badges ;
+3. Mes inscriptions ;
+2. Explorer événements ;
+1. Dashboard participant ;
+35.5 Participant
+13. Rapports.
+12. Assistant IA Gemini ;
+11. Historique modifications ;
+10. Présences / scans ;
+9. Paiements événement ;
+8. Inscriptions événement ;
+7. Détail événement admin ;
+6. Modifier événement ;
+5. Créer événement ;
+4. Mes événements ;
+3. Membres / rôles ;
+2. Mon institution ;
+1. Dashboard institution ;
+35.4 Institution
+11. Paramètres.
+10. Logs système ;
+9. Paiements ;
+8. Événements publiés ;
+7. Gestion catégories ;
+6. Gestion utilisateurs ;
+5. Répertoire institutionnel ;
+4. Détail institution ;
+3. Liste institutions ;
+2. Institutions en attente ;
+1. Dashboard global ;
+35.3 Super Admin
+----------------Page (44) Break----------------
+46
+• tableaux ;
+• statistiques ;
+• cartes blanches ;
+• sidebar bleu nuit ;
+Style :
+36.4 Dashboard
+• bouton action.
+• statut ;
+• type ;
+• région ;
+• ville ;
+• sigle ;
+• nom ;
+• logo ;
+Résultats en cartes modernes :
+Rechercher votre institution
+Première étape obligatoire :
+36.3 Register Institution
+4. confirmation.
+3. vérification OTP ;
+2. formulaire participant ou institution ;
+1. choix du type de compte ;
+Étapes :
+36.2 Register
+------------------------------------------------
+| QR + Badge + Dashboard  | Se connecter       |
+| Texte confiance         | Mot de passe       |
+| EventTrust GN           | Email/Téléphone    |
+| Branding / Illustration | Formulaire Login   |
+------------------------------------------------
+Disposition :
+36.1 Login
+36. Design UX/UI des pages principales
+----------------Page (45) Break----------------
+47
+CLIENT_URL=http://localhost:5173
+JWT_EXPIRES_IN=7d
+JWT_SECRET=...
+MONGO_URI=mongodb+srv://...
+NODE_ENV=development
+PORT=5000
+38.1 Backend .env
+38. Variables d’environnement
+npminstallhtml5-qrcodeqrcode.reactrechartsframer-motion
+npminstalltailwindcss@tailwindcss/vite
+npminstallreact-router-domaxioslucide-reactreact-hot-toast
+npminstall
+npmcreatevite@latest.-- --templatereact
+cd ../frontend
+37.3 Frontend
+npminstallnodemon--save-dev
+slugifynanoid
+cookie-parserexpress-rate-limitmultercloudinaryqrcodepdfkitaxios
+npminstallexpressmongoosedotenvcors helmetmorganbcryptjsjsonwebtoken
+npminit -y
+cd backend
+37.2 Backend
+mkdirbackendfrontend
+cd eventtrust-gn
+mkdireventtrust-gn
+37.1 Création du projet
+37. Commandes de démarrage du projet
+• interface claire.
+• boutons bleus ;
+• graphiques ;
+----------------Page (46) Break----------------
+48
+• error handler.
+• middlewares ;
+• .env ;
+• MongoDB Atlas ;
+• Express ;
+Étape 3 : Setup backend
+• modèle base de données.
+• architecture backend ;
+• architecture frontend ;
+• choix React Vite ;
+Étape 2 : Architecture globale
+• valider stack.
+• définir fonctionnalités avancées ;
+• définir MVP ;
+• identifier modules ;
+• identifier acteurs ;
+• reformuler le besoin ;
+Étape 1 : Analyse complète
+39. Plan de développement étape par étape
+VITE_APP_NAME=EventTrust GN
+VITE_API_URL=http://localhost:5000/api
+38.2 Frontend .env
+GEMINI_API_KEY=...
+LENGO_PAY_WEBHOOK_SECRET=...
+LENGO_PAY_BASE_URL=...
+LENGO_PAY_SECRET=...
+LENGO_PAY_API_KEY=...
+SMS_SENDER_ID=EventTrust
+SMS_API_KEY=...
+SMS_PROVIDER=dev
+CLOUDINARY_API_SECRET=...
+CLOUDINARY_API_KEY=...
+CLOUDINARY_CLOUD_NAME=...
+----------------Page (47) Break----------------
+49
+• CRUD ;
+Étape 9 : Catégories
+• page publique.
+• membres ;
+• suspension ;
+• validation ;
+• création ;
+Étape 8 : Institutions
+• demande accès.
+• réclamation ;
+• création référence ;
+• recherche référence ;
+Étape 7 : Répertoire institutionnel
+• mode dev.
+• expiration ;
+• vérification ;
+• stockage ;
+• génération ;
+Étape 6 : OTP SMS
+• rôles.
+• middleware ;
+• JWT ;
+• login ;
+• register ;
+Étape 5 : Authentification
+• AIRequest.
+• Log ;
+• Notification ;
+• Scan ;
+• Badge ;
+• Payment ;
+• Registration ;
+• Event ;
+• Category ;
+• Institution ;
+• InstitutionReference ;
+• OTP ;
+• User ;
+Étape 4 : Modèles MongoDB
+----------------Page (48) Break----------------
+50
+• Tailwind ;
+• Vite ;
+Étape 17 : Setup frontend
+• statistiques.
+Étape 16 : Dashboards backend
+• assistant frontend.
+• service ;
+• routes ;
+Étape 15 : Gemini IA
+• présence.
+• vérification ;
+• scan ;
+Étape 14 : Scan QR Code
+• PDF.
+• QR Code ;
+• badge ;
+Étape 13 : Badges et PDF
+• badge.
+• confirmation ;
+• webhook ;
+• paiement ;
+Étape 12 : Paiement Lengo Pay
+• places.
+• doublons ;
+• validation ;
+• inscription ;
+Étape 11 : Inscriptions
+• logs.
+• horodatage ;
+• QR Code ;
+• publication ;
+• brouillon ;
+Étape 10 : Événements
+• seed par défaut.
+----------------Page (49) Break----------------
+51
+• résultat.
+• scan ;
+• caméra ;
+Étape 24 : Scan frontend
+• vérifier.
+• télécharger ;
+• afficher ;
+Étape 23 : Badge frontend
+• confirmation.
+• statut ;
+• bouton payer ;
+Étape 22 : Paiement frontend
+• inscriptions.
+• modification ;
+• création ;
+• détail ;
+• liste ;
+Étape 21 : Interfaces événements
+• agent.
+• participant ;
+• institution ;
+• admin ;
+Étape 20 : Dashboards frontend
+• protected routes.
+• OTP ;
+• register ;
+• login ;
+Étape 19 : Auth frontend
+• vérification.
+• événements ;
+• catégories ;
+• recherche ;
+• hero ;
+Étape 18 : Landing page
+• auth context.
+• routes ;
+----------------Page (50) Break----------------
+52
+14. scan badge ;
+13. badge numérique ;
+12. inscription participant ;
+11. page publique événement ;
+10. QR Code événement ;
+9. publication événement ;
+8. création événement ;
+7. validation institution ;
+6. création institution ;
+5. OTP en mode développement ;
+4. authentification avec rôles ;
+3. répertoire institutionnel ;
+2. recherche institutionnelle intelligente ;
+1. Landing page riche ;
+Le MVP doit contenir :
+40. MVP recommandé
+• réponses jury.
+• captures ;
+• données ;
+• scénario ;
+Étape 28 : Soutenance
+• scénario démo.
+• variables ;
+• installation ;
+• README ;
+Étape 27 : Documentation
+• IA.
+• QR ;
+• SMS ;
+• paiement ;
+• rôles ;
+• frontend ;
+• backend ;
+Étape 26 : Tests
+• suggestion catégorie.
+• amélioration texte ;
+• assistant ;
+Étape 25 : IA frontend
+----------------Page (51) Break----------------
+53
+17. Le Super Admin consulte les logs.
+16. Le responsable utilise Gemini pour améliorer une nouvelle annonce.
+15. Le dashboard institution montre la présence.
+14. Le système affiche “Badge valide”.
+13. Il scanne le badge.
+12. L’agent se connecte.
+11. Le système génère un badge QR Code.
+10. Si événement payant, il simule un paiement Lengo Pay.
+9. Il valide son téléphone.
+8. Il reçoit un OTP.
+7. Il s’inscrit comme participant.
+6. Il ouvre “Forum de l’Innovation Numérique 2026”.
+5. Il consulte les événements.
+4. Il ouvre la page institution.
+3. Le système affiche l’institution avec logo, ville, quartier, statut.
+2. Il recherche “IST”.
+1. Le public arrive sur la landing page.
+42. Scénario de démonstration
+• API publique.
+• gestion multi-campus ;
+• multi-pays ;
+• carte interactive ;
+• moteur de recommandation ;
+• certification d’horodatage ;
+• signature numérique ;
+• attestations numériques ;
+• notifications WhatsApp ;
+• application mobile ;
+• SMS réel ;
+• intégration réelle Lengo Pay ;
+Après le MVP :
+41. Fonctionnalités avancées
+18. paiement mock Lengo Pay.
+17. assistant IA simple ;
+16. logs simples ;
+15. dashboard institution ;
+----------------Page (52) Break----------------
+54
+• double scan.
+• scan ;
+• vérification ;
+• génération ;
+43.6 Tests Badge
+• webhook mock.
+• failed ;
+• success ;
+• paiement pending ;
+43.5 Tests Paiement
+• validation.
+• places max ;
+• doublon ;
+• inscription simple ;
+43.4 Tests Inscription
+• annulation.
+• modification ;
+• QR Code ;
+• publication ;
+• création ;
+43.3 Tests Événements
+• institution non référencée.
+• institution non inscrite ;
+• institution déjà inscrite ;
+• recherche par ville ;
+• recherche par sigle ;
+43.2 Tests Répertoire
+• pending institution.
+• rôle ;
+• login ;
+• register institution ;
+• register participant ;
+43.1 Tests Auth
+43. Tests à prévoir
+----------------Page (53) Break----------------
+55
+Parce qu’EventTrust GN centralise, horodate, vérifie, archive et sécurise les publications.
+Pourquoi EventTrust GN au lieu de Facebook ?
+45.2 Questions possibles du jury
+• traçabilité.
+• sécurité ;
+• dashboards ;
+• IA Gemini ;
+• paiement mobile ;
+• horodatage ;
+• QR Code ;
+• recherche intelligente ;
+• solution institutionnelle ;
+• problème réel ;
+• projet réaliste ;
+45.1 Points forts à défendre
+45. Préparation de la soutenance
+• perspectives.
+• limites ;
+• guide de démo ;
+• scénarios de test ;
+• rôles ;
+• routes API ;
+• modèles MongoDB ;
+• architecture ;
+• variables d’environnement ;
+• installation frontend ;
+• installation backend ;
+• présentation du projet ;
+La documentation doit inclure :
+44. Documentation technique
+• suggérer catégorie.
+• générer SMS ;
+• améliorer texte ;
+43.7 Tests IA
+----------------Page (54) Break----------------
+56
+• multi-pays.
+• statistiques nationales ;
+• moteur de recommandation d’événements ;
+• espace presse ;
+• API pour institutions ;
+• vérification documentaire ;
+• attestations numériques ;
+• intégration complète Mobile Money ;
+• certification officielle des publications ;
+• application mobile Android/iOS ;
+• plateforme nationale d’annonces institutionnelles ;
+EventTrust GN peut évoluer vers :
+47. Perspectives d’évolution
+• pas de notification WhatsApp réelle.
+• pas de blockchain ;
+• pas de signature numérique avancée ;
+• pas de certification officielle d’horodatage ;
+• pas d’application mobile native ;
+• SMS peut être en mode développement ;
+• Lengo Pay peut être simulé ;
+Dans la première version :
+46. Limites du MVP
+Pour aider les institutions à rédiger des annonces professionnelles et analyser leurs statistiques.
+Pourquoi Gemini ?
+Parce que la structure des événements, formulaires et données institutionnelles peut être flexible.
+Pourquoi MongoDB ?
+Pour éviter les fausses institutions et garantir la confiance.
+Pourquoi valider les institutions ?
+Pour permettre une vérification rapide de l’authenticité des annonces et badges.
+Pourquoi QR Code ?
+----------------Page (55) Break----------------
+57
+IA : Gemini
+Paiement : Lengo Pay
+OTP/SMS : sms.service.js abstrait
+Authentification : JWT + rôles
+Base de données : MongoDB Atlas avec Mongoose
+Backend : Node.js + Express.js
+Frontend : React.js avec Vite + Tailwind CSS
+Stack souhaitée :
+enrichie par une assistance IA via Gemini.
+numériques, liée à un paiement Lengo Pay si l’événement est payant et 
+historique, ouverte aux inscriptions si nécessaire, associée à des badges 
+liée à une institution officielle, consultable publiquement, modifiable avec 
+Chaque publication doit être horodatée, vérifiable par QR Code, archivée, 
+ou privés.
+séminaires, appels à candidature, cérémonies, ateliers et événements publics 
+soutenances, formations, forums, concours, compétitions, conférences, 
+La plateforme permet de publier officiellement des événements comme les 
+sportives, institutions publiques et organisations privées.
+universités, écoles, ONG, entreprises, centres de formation, fédérations 
+inscription, vérification et gestion des événements officiels pour les 
+EventTrust GN est une plateforme SaaS institutionnelle de publication, 
+développement complet du projet EventTrust GN.
+Je veux que tu m’assistes étape par étape dans la conception et le 
+intégration IA et conception de plateformes institutionnelles.
+sécurité applicative, paiement mobile, OTP/SMS, MongoDB, Node.js, React.js, 
+Tu es un expert senior en développement full-stack, architecture SaaS, UX/UI, 
+49. Prompt complet pour Claude Code
+avancées comme le paiement réel, les SMS réels, les attestations numériques et l’application mobile.
+développé progressivement, en commençant par un MVP solide puis en ajoutant les fonctionnalités
+Le projet est réaliste, utile, professionnel et parfaitement adapté à une soutenance. Il peut être
+artificielle.
+gestion des inscriptions, le paiement mobile, les badges numériques, les dashboards et l’intelligence
+confiance, l’authenticité, l’horodatage, la recherche institutionnelle, la vérification par QR Code, la
+Contrairement à une simple billetterie ou à une page d’information, EventTrust GN met l’accent sur la
+centraliser, sécuriser et rendre vérifiables les événements officiels publiés par les institutions.
+EventTrust GN est une plateforme SaaS institutionnelle moderne qui répond à un besoin réel :
+48. Conclusion
+----------------Page (56) Break----------------
+58
+Vite vs Next.js. Ne commence pas le code avant ma validation.
+fonctionnalités avancées, risques techniques, recommandations et choix React 
+Commence par l’étape 1 : analyse complète du projet, acteurs, modules, MVP, 
+6. attends ma validation avant de continuer.
+5. explique comment tester ;
+4. donne le code complet ;
+3. donne les fichiers ;
+2. donne les commandes ;
+1. explique l’objectif ;
+À chaque étape :
+Travaille étape par étape. Ne code pas tout d’un coup.
+Gestionnaire d’Inscriptions, Agent de Contrôle, Participant, Public visiteur.
+Rôles : Super Admin, Admin Institution, Responsable Communication, 
+inscrite, institution non référencée.
+Gérer les cas : institution déjà inscrite, institution référencée mais non 
+institution_references et institutions.
+Ajouter un module Répertoire des institutions avec deux collections : 
+publiés et nombre d’événements à venir.
+page EventTrust si elle existe, statut de vérification, nombre d’événements 
+région, ville, commune, quartier, adresse, site officiel, page officielle, 
+Pour chaque institution, afficher logo, nom complet, sigle, type, pays, 
+correspondantes.
+Le système doit afficher les institutions, les événements et les catégories 
+quartier, une région, un événement ou une catégorie.
+Un visiteur doit pouvoir rechercher une institution, un sigle, une ville, un 
+landing page.
+Fonctionnalité clé à ajouter : recherche institutionnelle intelligente sur la 
+Logo : bouclier + check + détail QR Code.
+Police : Inter
+Accent doux : #EAF2FF
+Bordure : #E2E8F0
+Texte secondaire : #475569
+Texte principal : #0F172A
+Surface : #FFFFFF
+Fond : #F8FAFC
+Couleur secondaire : #0A1F44
+Couleur primaire : #0B5ED7
+confiance.
+Slogan : Publier, vérifier et participer aux événements officiels en toute 
+Nom : EventTrust GN
+Identité visuelle :
+PDF : PDFKit
+Scan : html5-qrcode
+QR Code : qrcode / qrcode.react
+Upload : Cloudinary
+----------------Page (57) Break----------------

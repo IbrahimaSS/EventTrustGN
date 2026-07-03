@@ -1,0 +1,14 @@
+const mongoose = require('mongoose');
+
+const otpSchema = new mongoose.Schema({
+  phone: { type: String, required: true },
+  codeHash: { type: String, required: true },
+  purpose: { type: String, required: true }, // ex: 'verification', 'password_reset'
+  expiresAt: { type: Date, required: true },
+  attempts: { type: Number, default: 0 },
+  used: { type: Boolean, default: false }
+}, {
+  timestamps: true
+});
+
+module.exports = mongoose.model('OTP', otpSchema);

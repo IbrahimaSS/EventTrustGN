@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Couleurs Principales - Palette EventTrust GN */
+  --color-primary: #0B5ED7;
+  --color-primary-50: #EAF2FF;
+  --color-primary-100: #D5E5FF;
+  --color-primary-200: #ABCBFF;
+  --color-primary-500: #0B5ED7;
+  --color-primary-600: #0B5ED7;
+  --color-primary-700: #094DBF;
+  --color-primary-800: #073DA6;
+  --color-primary-900: #0A1F44;
+
+  --color-secondary: #0A1F44;
+  --color-secondary-50: #EAF2FF;
+  --color-secondary-100: #D5E5FF;
+  --color-secondary-500: #0A1F44;
+  --color-secondary-600: #0A1F44;
+  --color-secondary-700: #081A3A;
+  --color-secondary-900: #050E22;
+
+  /* Couleurs de support */
+  --color-surface: #FFFFFF;
+  --color-background: #F8FAFC;
+  --color-border: #E2E8F0;
+  --color-accent: #EAF2FF;
+  --color-text-main: #0F172A;
+  --color-text-secondary: #475569;
+}
+
+body {
+  @apply bg-background text-text-main antialiased;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.glass-card {
+  @apply bg-white/95 backdrop-blur-md border-b border-border shadow-sm;
+}
+
+/* ========================================================
+   GLOBAL DARK MODE OVERRIDES (Elegant Filter Magic)
+   Permet d'appliquer un mode sombre parfait à toute l'application
+   ======================================================== */
+html.dark {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* On ré-inverse les éléments qui ne doivent pas changer de couleur (images, vidéos) */
+html.dark img,
+html.dark video,
+html.dark iframe,
+html.dark [style*="background-image"],
+html.dark .qr-code {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Correction pour adoucir les ombres qui deviennent blanches après inversion */
+html.dark .shadow-sm, 
+html.dark .shadow-md, 
+html.dark .shadow-lg, 
+html.dark .shadow-xl {
+  box-shadow: none !important;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Custom Admin Table Styling */
+.custom-admin-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid var(--color-border, #E2E8F0);
+}
+
+.custom-admin-table th {
+  border: 1px solid var(--color-border, #E2E8F0);
+  padding: 1rem;
+  text-align: center;
+  vertical-align: middle;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  background: var(--gradient-primary, var(--color-primary, #0B5ED7));
+}
+
+.custom-admin-table td {
+  border: 1px solid var(--color-border, #E2E8F0);
+  padding: 1rem;
+  vertical-align: middle;
+}
+
+.custom-admin-table tr:hover td {
+  background-color: var(--color-background, #F8FAFC);
+}

@@ -1,0 +1,1 @@
+const mongoose = require('mongoose'); require('dotenv').config(); const Institution = require('./src/models/Institution'); mongoose.connect(process.env.MONGO_URI).then(async () => { await Institution.updateMany({}, { status: 'active' }); console.log('Toutes les institutions ont été activées avec succès !'); process.exit(0); });
