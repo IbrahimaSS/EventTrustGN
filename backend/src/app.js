@@ -10,7 +10,19 @@ const app = express();
 // Middlewares globaux
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      process.env.CLIENT_URL
+    ].filter(Boolean);
+    // Autoriser les requêtes sans origin (mobile, Postman, etc.)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(null, true); // En production, on autorise tout pour l'instant
+    }
+  },
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
