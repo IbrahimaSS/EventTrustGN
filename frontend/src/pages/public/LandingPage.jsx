@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   Search, ShieldCheck, QrCode, Calendar, Clock, MapPin,
   Building2, Users, CheckCircle2, ChevronRight, GraduationCap,
@@ -16,8 +19,11 @@ import EventBootcamp from '../../assets/event_bootcamp.png';
 import EventTournoi from '../../assets/event_tournoi.png';
 import AIAssistantWidget from '../../components/layout/AIAssistantWidget';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const LandingPage = () => {
   const navigate = useNavigate();
+  const mainRef = useRef(null);
 
   // State for fetched events
   const [latestEvents, setLatestEvents] = useState([]);
@@ -48,8 +54,293 @@ const LandingPage = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // ==================== GSAP SCROLL ANIMATIONS (ULTRA PRO) ====================
+  useGSAP(() => {
+
+    // 1. STATS COUNTER — Compteurs animés avec effet de pulsation
+    gsap.utils.toArray('.gsap-stat-number').forEach((el) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+      tl.from(el, {
+        textContent: 0,
+        duration: 2.5,
+        ease: 'power2.out',
+        snap: { textContent: 1 },
+      })
+      .from(el, {
+        scale: 1.3,
+        color: '#3b82f6',
+        duration: 0.4,
+        ease: 'back.out(3)',
+      }, '-=0.5')
+      .to(el, {
+        scale: 1,
+        color: '#0f172a',
+        duration: 0.3,
+        ease: 'power2.out',
+      });
+    });
+
+    // 2. SECTION TITLES — Split text reveal cinématique
+    gsap.utils.toArray('.gsap-section-title').forEach((el) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+          toggleActions: 'play none none none'
+        }
+      });
+      tl.from(el, {
+        y: 60,
+        opacity: 0,
+        duration: 0.9,
+        ease: 'power4.out',
+      })
+      .from(el.querySelectorAll('span'), {
+        color: '#94a3b8',
+        duration: 0.6,
+        ease: 'power2.out',
+      }, '-=0.3');
+    });
+
+    // 3. CATEGORIES — Cascade 3D avec rotation
+    gsap.from('.gsap-category-card', {
+      y: 80,
+      opacity: 0,
+      scale: 0.8,
+      rotationY: 15,
+      duration: 0.6,
+      stagger: 0.08,
+      ease: 'back.out(1.7)',
+      scrollTrigger: {
+        trigger: '.gsap-categories-grid',
+        start: 'top 82%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    // 4. STEPS — Apparition en cascade avec effet 3D
+    const stepCards = gsap.utils.toArray('.gsap-step-card');
+    stepCards.forEach((card, i) => {
+      gsap.from(card, {
+        x: i % 2 === 0 ? -100 : 100,
+        y: 40,
+        opacity: 0,
+        rotationY: i % 2 === 0 ? -10 : 10,
+        duration: 0.7,
+        ease: 'power3.out',
+        delay: i * 0.15,
+        scrollTrigger: {
+          trigger: '.gsap-steps-grid',
+          start: 'top 80%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+
+    // 5. LIGNE DE PROGRESSION — Se dessine progressivement
+    gsap.from('.gsap-progress-line', {
+      scaleX: 0,
+      transformOrigin: 'left center',
+      duration: 2,
+      ease: 'power2.inOut',
+      scrollTrigger: {
+        trigger: '.gsap-steps-grid',
+        start: 'top 75%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    // 6. FEATURES CARDS — Flip 3D stagger
+    gsap.from('.gsap-feature-card', {
+      y: 60,
+      opacity: 0,
+      rotationX: 10,
+      scale: 0.92,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.gsap-features-grid',
+        start: 'top 82%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    // 7. PRICING CARDS — Scale up élastique
+    gsap.from('.gsap-pricing-card', {
+      scale: 0.7,
+      opacity: 0,
+      y: 50,
+      duration: 0.8,
+      stagger: 0.25,
+      ease: 'elastic.out(1, 0.6)',
+      scrollTrigger: {
+        trigger: '.gsap-pricing-grid',
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    // ============================================================
+    // 8. VERIFICATION BOX — ANIMATION CINÉMATIQUE ULTRA PRO
+    // ============================================================
+    const verifyTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.gsap-verify-section',
+        start: 'top 75%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    // Phase 1 : Le conteneur principal apparaît
+    verifyTl.from('.gsap-verify-container', {
+      y: 80,
+      opacity: 0,
+      scale: 0.9,
+      duration: 0.8,
+      ease: 'power3.out',
+    })
+
+    // Phase 2 : Le côté QR Code glisse depuis la gauche avec rotation
+    .from('.gsap-verify-left', {
+      x: -120,
+      opacity: 0,
+      rotationY: -20,
+      duration: 0.7,
+      ease: 'power3.out',
+    }, '-=0.3')
+
+    // Phase 3 : Le QR Code pulse et brille
+    .from('.gsap-qr-icon', {
+      scale: 0,
+      rotation: -180,
+      duration: 0.6,
+      ease: 'back.out(2)',
+    }, '-=0.2')
+    .to('.gsap-qr-icon', {
+      boxShadow: '0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(59, 130, 246, 0.2)',
+      duration: 0.4,
+      ease: 'power2.out',
+    })
+    .to('.gsap-qr-icon', {
+      boxShadow: '0 0 0px rgba(59, 130, 246, 0)',
+      duration: 0.6,
+      ease: 'power2.inOut',
+    })
+
+    // Phase 4 : Les champs du formulaire apparaissent en cascade
+    .from('.gsap-verify-title', {
+      y: 20,
+      opacity: 0,
+      duration: 0.4,
+      ease: 'power2.out',
+    }, '-=0.8')
+    .from('.gsap-verify-input', {
+      x: -30,
+      opacity: 0,
+      duration: 0.4,
+      ease: 'power2.out',
+    }, '-=0.3')
+    .from('.gsap-verify-btn', {
+      scale: 0.5,
+      opacity: 0,
+      duration: 0.3,
+      ease: 'back.out(2)',
+    }, '-=0.1')
+
+    // Phase 5 : Le panneau résultat arrive depuis la droite
+    .from('.gsap-verify-right', {
+      x: 120,
+      opacity: 0,
+      rotationY: 20,
+      duration: 0.7,
+      ease: 'power3.out',
+    }, '-=0.4')
+
+    // Phase 6 : Le badge "Valide" apparaît avec un effet de scan
+    .from('.gsap-verify-badge', {
+      scale: 0,
+      rotation: -10,
+      duration: 0.5,
+      ease: 'elastic.out(1, 0.5)',
+    }, '-=0.2')
+
+    // Phase 7 : Les lignes de données apparaissent une par une (type machine à écrire)
+    .from('.gsap-verify-row', {
+      x: 40,
+      opacity: 0,
+      duration: 0.3,
+      stagger: 0.12,
+      ease: 'power2.out',
+    }, '-=0.4')
+
+    // Phase 8 : Le statut "Valide" pulse en vert
+    .from('.gsap-verify-status', {
+      scale: 0,
+      duration: 0.4,
+      ease: 'back.out(3)',
+    }, '-=0.1')
+    .to('.gsap-verify-status', {
+      boxShadow: '0 0 20px rgba(16, 185, 129, 0.6)',
+      duration: 0.3,
+      yoyo: true,
+      repeat: 2,
+      ease: 'power2.inOut',
+    });
+
+    // 9. CTA BANNER — Parallax + fade
+    gsap.from('.gsap-cta-banner', {
+      y: 80,
+      opacity: 0,
+      scale: 0.95,
+      duration: 0.9,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.gsap-cta-banner',
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    // 10. TESTIMONIAL — Rotation subtile + reveal
+    gsap.from('.gsap-testimonial', {
+      y: 50,
+      opacity: 0,
+      rotationX: 5,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.gsap-testimonial',
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    // 11. EVENT CARDS — Stagger montée
+    gsap.from('.gsap-event-card', {
+      y: 60,
+      opacity: 0,
+      scale: 0.9,
+      duration: 0.5,
+      stagger: 0.12,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.gsap-events-grid',
+        start: 'top 82%',
+        toggleActions: 'play none none none'
+      }
+    });
+
+  }, { scope: mainRef });
+
   return (
-    <div className="min-h-screen bg-white font-sans selection:bg-primary-500 selection:text-white pb-0">
+    <div ref={mainRef} className="min-h-screen bg-white font-sans selection:bg-primary-500 selection:text-white pb-0">
 
       {/* Hero Section */}
       <section className="relative pt-[72px] overflow-hidden bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-slate-50">
@@ -152,28 +443,28 @@ const LandingPage = () => {
               <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mb-3">
                 <Building className="h-6 w-6 text-primary-600" />
               </div>
-              <div className="text-3xl font-extrabold text-slate-900">250</div>
+              <div className="text-3xl font-extrabold text-slate-900 gsap-stat-number" data-value="250">250</div>
               <div className="text-sm font-medium text-slate-500">Institutions</div>
             </div>
             <div className="flex flex-col items-center justify-center text-center">
               <div className="w-12 h-12 bg-teal-50 rounded-full flex items-center justify-center mb-3">
                 <Calendar className="h-6 w-6 text-teal-600" />
               </div>
-              <div className="text-3xl font-extrabold text-slate-900">55</div>
+              <div className="text-3xl font-extrabold text-slate-900 gsap-stat-number" data-value="55">55</div>
               <div className="text-sm font-medium text-slate-500">Événements publiés</div>
             </div>
             <div className="flex flex-col items-center justify-center text-center">
               <div className="w-12 h-12 bg-purple-50 rounded-full flex items-center justify-center mb-3">
                 <Users className="h-6 w-6 text-purple-600" />
               </div>
-              <div className="text-3xl font-extrabold text-slate-900">520</div>
+              <div className="text-3xl font-extrabold text-slate-900 gsap-stat-number" data-value="520">520</div>
               <div className="text-sm font-medium text-slate-500">Inscriptions</div>
             </div>
             <div className="flex flex-col items-center justify-center text-center">
               <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center mb-3">
                 <ShieldCheck className="h-6 w-6 text-green-600" />
               </div>
-              <div className="text-3xl font-extrabold text-slate-900">98%</div>
+              <div className="text-3xl font-extrabold text-slate-900 gsap-stat-number" data-value="98">98%</div>
               <div className="text-sm font-medium text-slate-500">Taux de confiance</div>
             </div>
           </div>
@@ -182,33 +473,33 @@ const LandingPage = () => {
 
       {/* Catégories d'événements */}
       <section className="py-16 bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 gsap-section-title">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 tracking-tight mb-3">Catégories d'<span className="text-primary-600">événements</span></h2>
           <p className="text-slate-500 font-medium">Une seule plateforme pour centraliser les annonces officielles.</p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <div className="bg-white border border-slate-200 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 gsap-categories-grid">
+          <div className="gsap-category-card bg-white border border-slate-200 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
             <GraduationCap className="h-10 w-10 text-blue-500 mb-3" />
             <span className="font-bold text-slate-800 text-sm">Soutenances</span>
           </div>
-          <div className="bg-white border border-slate-200 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
+          <div className="gsap-category-card bg-white border border-slate-200 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
             <BookOpen className="h-10 w-10 text-green-500 mb-3" />
             <span className="font-bold text-slate-800 text-sm">Formations</span>
           </div>
-          <div className="bg-white border border-slate-200 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
+          <div className="gsap-category-card bg-white border border-slate-200 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
             <Users className="h-10 w-10 text-purple-500 mb-3" />
             <span className="font-bold text-slate-800 text-sm">Forums</span>
           </div>
-          <div className="bg-white border border-slate-200 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
+          <div className="gsap-category-card bg-white border border-slate-200 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
             <Trophy className="h-10 w-10 text-yellow-500 mb-3" />
             <span className="font-bold text-slate-800 text-sm">Concours</span>
           </div>
-          <div className="bg-white border border-slate-200 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
+          <div className="gsap-category-card bg-white border border-slate-200 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
             <Medal className="h-10 w-10 text-red-500 mb-3" />
             <span className="font-bold text-slate-800 text-sm">Compétitions</span>
           </div>
-          <div className="bg-white border border-slate-200 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
+          <div className="gsap-category-card bg-white border border-slate-200 rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow cursor-pointer">
             <Mic className="h-10 w-10 text-teal-500 mb-3" />
             <span className="font-bold text-slate-800 text-sm">Conférences</span>
           </div>
@@ -218,19 +509,19 @@ const LandingPage = () => {
       {/* Comment ça marche ? */}
       <section className="py-20 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="text-center mb-14 gsap-section-title">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 tracking-tight mb-4">Comment ça <span className="text-primary-600">marche ?</span></h2>
             <p className="text-slate-500 max-w-xl mx-auto">Un processus simple en 4 étapes pour publier, gérer et vérifier vos événements.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative gsap-steps-grid">
             {/* Ligne de connexion (Desktop) */}
-            <div className="hidden lg:block absolute top-16 left-[15%] right-[15%] h-[3px] bg-gradient-to-r from-primary-200 via-emerald-200 via-purple-200 to-orange-200 z-0 rounded-full"></div>
+            <div className="gsap-progress-line hidden lg:block absolute top-16 left-[15%] right-[15%] h-[3px] bg-gradient-to-r from-primary-200 via-emerald-200 via-purple-200 to-orange-200 z-0 rounded-full"></div>
 
             {/* Étape 1 */}
             <motion.div
               whileHover={{ y: -6 }}
-              className="relative z-10 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-xl transition-shadow duration-300 group"
+              className="gsap-step-card relative z-10 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-xl transition-shadow duration-300 group"
             >
               <div className="flex items-center gap-4 mb-5">
                 <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center group-hover:bg-primary-600 transition-colors duration-300 shrink-0">
@@ -245,7 +536,7 @@ const LandingPage = () => {
             {/* Étape 2 */}
             <motion.div
               whileHover={{ y: -6 }}
-              className="relative z-10 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-xl transition-shadow duration-300 group"
+              className="gsap-step-card relative z-10 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-xl transition-shadow duration-300 group"
             >
               <div className="flex items-center gap-4 mb-5">
                 <div className="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center group-hover:bg-emerald-500 transition-colors duration-300 shrink-0">
@@ -260,7 +551,7 @@ const LandingPage = () => {
             {/* Étape 3 */}
             <motion.div
               whileHover={{ y: -6 }}
-              className="relative z-10 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-xl transition-shadow duration-300 group"
+              className="gsap-step-card relative z-10 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-xl transition-shadow duration-300 group"
             >
               <div className="flex items-center gap-4 mb-5">
                 <div className="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center group-hover:bg-purple-500 transition-colors duration-300 shrink-0">
@@ -275,7 +566,7 @@ const LandingPage = () => {
             {/* Étape 4 */}
             <motion.div
               whileHover={{ y: -6 }}
-              className="relative z-10 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-xl transition-shadow duration-300 group"
+              className="gsap-step-card relative z-10 bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-xl transition-shadow duration-300 group"
             >
               <div className="flex items-center gap-4 mb-5">
                 <div className="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center group-hover:bg-orange-500 transition-colors duration-300 shrink-0">
@@ -350,48 +641,48 @@ const LandingPage = () => {
       </section>
 
       {/* Verification Box */}
-      <section className="py-16 bg-slate-50 border-y border-slate-100">
+      <section className="py-16 bg-slate-50 border-y border-slate-100 gsap-verify-section">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl border border-slate-200 shadow-lg p-8 flex flex-col md:flex-row items-center gap-8">
+          <div className="gsap-verify-container bg-white rounded-3xl border border-slate-200 shadow-lg p-8 flex flex-col md:flex-row items-center gap-8" style={{ perspective: '1000px' }}>
 
-            <div className="flex-1 border-r border-slate-100 pr-0 md:pr-8 flex flex-col sm:flex-row items-center gap-6">
-              <div className="w-32 h-32 bg-slate-100 rounded-xl flex items-center justify-center shrink-0">
+            <div className="gsap-verify-left flex-1 border-r border-slate-100 pr-0 md:pr-8 flex flex-col sm:flex-row items-center gap-6">
+              <div className="gsap-qr-icon w-32 h-32 bg-slate-100 rounded-xl flex items-center justify-center shrink-0">
                 <QrCode className="h-20 w-20 text-slate-800" />
               </div>
               <div className="w-full">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Vérifier une invitation ou un badge</h3>
-                <p className="text-sm text-slate-500 mb-4">Scannez le QR Code ou saisissez le code unique pour consulter la version officielle.</p>
-                <div className="text-sm font-medium text-slate-700 mb-2">Ou saisissez le code unique</div>
-                <div className="flex gap-2">
+                <h3 className="gsap-verify-title text-xl font-bold text-slate-900 mb-2">Vérifier une invitation ou un badge</h3>
+                <p className="gsap-verify-title text-sm text-slate-500 mb-4">Scannez le QR Code ou saisissez le code unique pour consulter la version officielle.</p>
+                <div className="gsap-verify-input text-sm font-medium text-slate-700 mb-2">Ou saisissez le code unique</div>
+                <div className="gsap-verify-input flex gap-2">
                   <input type="text" placeholder="Ex: EVT-2026-00452" className="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-4 py-2 focus:outline-none focus:border-primary-500" />
-                  <button className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg font-bold">Vérifier</button>
+                  <button className="gsap-verify-btn bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-lg font-bold transition-colors">Vérifier</button>
                 </div>
               </div>
             </div>
 
-            <div className="flex-1 pl-0 md:pl-4 w-full">
+            <div className="gsap-verify-right flex-1 pl-0 md:pl-4 w-full" style={{ perspective: '800px' }}>
               <div className="bg-emerald-50 rounded-2xl border border-emerald-100 p-6 relative overflow-hidden">
-                <div className="flex items-center gap-3 mb-6">
+                <div className="gsap-verify-badge flex items-center gap-3 mb-6">
                   <div className="bg-emerald-500 text-white rounded-full p-1"><CheckCircle className="h-5 w-5" /></div>
                   <h4 className="text-lg font-bold text-emerald-800">Publication authentique</h4>
                 </div>
 
                 <div className="space-y-3 text-sm">
-                  <div className="flex justify-between border-b border-emerald-100/50 pb-2">
+                  <div className="gsap-verify-row flex justify-between border-b border-emerald-100/50 pb-2">
                     <span className="text-slate-500">Institution</span>
                     <span className="font-semibold text-slate-900 text-right">Université de Conakry</span>
                   </div>
-                  <div className="flex justify-between border-b border-emerald-100/50 pb-2">
+                  <div className="gsap-verify-row flex justify-between border-b border-emerald-100/50 pb-2">
                     <span className="text-slate-500">Événement</span>
                     <span className="font-semibold text-slate-900 text-right">Forum de l'Innovation Numérique 2026</span>
                   </div>
-                  <div className="flex justify-between border-b border-emerald-100/50 pb-2">
+                  <div className="gsap-verify-row flex justify-between border-b border-emerald-100/50 pb-2">
                     <span className="text-slate-500">Date de publication</span>
                     <span className="font-semibold text-slate-900 text-right">20 Mai 2026 à 10:32</span>
                   </div>
-                  <div className="flex justify-between pt-1">
+                  <div className="gsap-verify-row flex justify-between pt-1">
                     <span className="text-slate-500">Statut</span>
-                    <span className="bg-emerald-200 text-emerald-800 px-3 py-0.5 rounded-full font-bold text-xs">Valide</span>
+                    <span className="gsap-verify-status bg-emerald-200 text-emerald-800 px-3 py-0.5 rounded-full font-bold text-xs">Valide</span>
                   </div>
                 </div>
               </div>
@@ -403,33 +694,33 @@ const LandingPage = () => {
 
       {/* Pourquoi choisir EventTrust GN */}
       <section className="py-16 bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 gsap-section-title">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 tracking-tight">Pourquoi choisir <span className="text-primary-600">EventTrust GN ?</span></h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white p-6 border border-slate-200 rounded-2xl flex flex-row lg:flex-col items-center lg:items-start gap-4 lg:gap-0">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 gsap-features-grid">
+          <div className="gsap-feature-card bg-white p-6 border border-slate-200 rounded-2xl flex flex-row lg:flex-col items-center lg:items-start gap-4 lg:gap-0">
             <ShieldCheck className="h-10 w-10 text-primary-600 lg:mb-4 shrink-0" />
             <div>
               <h3 className="font-bold text-slate-900 mb-2">Publication officielle</h3>
               <p className="text-sm text-slate-500">Chaque événement est publié depuis un espace institutionnel vérifié.</p>
             </div>
           </div>
-          <div className="bg-white p-6 border border-slate-200 rounded-2xl flex flex-row lg:flex-col items-center lg:items-start gap-4 lg:gap-0">
+          <div className="gsap-feature-card bg-white p-6 border border-slate-200 rounded-2xl flex flex-row lg:flex-col items-center lg:items-start gap-4 lg:gap-0">
             <History className="h-10 w-10 text-emerald-600 lg:mb-4 shrink-0" />
             <div>
               <h3 className="font-bold text-slate-900 mb-2">Traçabilité complète</h3>
               <p className="text-sm text-slate-500">Horodatage, historique est suivi de chaque action en toute transparence.</p>
             </div>
           </div>
-          <div className="bg-white p-6 border border-slate-200 rounded-2xl flex flex-row lg:flex-col items-center lg:items-start gap-4 lg:gap-0">
+          <div className="gsap-feature-card bg-white p-6 border border-slate-200 rounded-2xl flex flex-row lg:flex-col items-center lg:items-start gap-4 lg:gap-0">
             <FileCheck className="h-10 w-10 text-purple-600 lg:mb-4 shrink-0" />
             <div>
               <h3 className="font-bold text-slate-900 mb-2">Badges numériques</h3>
               <p className="text-sm text-slate-500">Générez des badges uniques avec QR Code pour chaque participant.</p>
             </div>
           </div>
-          <div className="bg-white p-6 border border-slate-200 rounded-2xl flex flex-row lg:flex-col items-center lg:items-start gap-4 lg:gap-0">
+          <div className="gsap-feature-card bg-white p-6 border border-slate-200 rounded-2xl flex flex-row lg:flex-col items-center lg:items-start gap-4 lg:gap-0">
             <Lock className="h-10 w-10 text-orange-600 lg:mb-4 shrink-0" />
             <div>
               <h3 className="font-bold text-slate-900 mb-2">Archivage sécurisé</h3>
@@ -442,14 +733,14 @@ const LandingPage = () => {
       {/* Tarifs */}
       <section className="py-20 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 gsap-section-title">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 tracking-tight mb-4">Une tarification simple et <span className="text-primary-600">transparente</span></h2>
             <p className="text-slate-500 max-w-2xl mx-auto">Pas de surprises cachées. Commencez gratuitement et évoluez avec vos besoins.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto gsap-pricing-grid">
             {/* Plan Gratuit */}
-            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm relative overflow-hidden">
+            <div className="gsap-pricing-card bg-white rounded-3xl p-8 border border-slate-200 shadow-sm relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded-bl-xl">Recommandé au lancement</div>
               <h3 className="text-xl font-bold text-slate-900 mb-2">Gratuit</h3>
               <p className="text-slate-500 text-sm mb-6">Pour les institutions qui démarrent et veulent tester.</p>
@@ -469,7 +760,7 @@ const LandingPage = () => {
             </div>
 
             {/* Plan Premium */}
-            <div className="bg-secondary-500 rounded-3xl p-8 border border-slate-800 shadow-lg text-white">
+            <div className="gsap-pricing-card bg-secondary-500 rounded-3xl p-8 border border-slate-800 shadow-lg text-white">
               <h3 className="text-xl font-bold text-white mb-2">Premium</h3>
               <p className="text-blue-200 text-sm mb-6">Pour les besoins avancés et un accompagnement sur mesure.</p>
               <div className="mb-8">
@@ -526,7 +817,7 @@ const LandingPage = () => {
             </div>
           </div>
 
-          <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200">
+          <div className="gsap-testimonial bg-slate-50 p-8 rounded-3xl border border-slate-200">
             <Quote className="h-10 w-10 text-slate-300 mb-4" />
             <p className="text-lg text-slate-700 italic font-medium mb-6">
               « EventTrust GN nous permet de publier nos événements officiels et de gagner la confiance de notre communauté. La vérification par QR Code est un vrai plus. »
@@ -544,7 +835,7 @@ const LandingPage = () => {
 
       {/* CTA Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="bg-secondary-500 rounded-3xl p-10 md:p-12 flex flex-col md:flex-row items-center justify-between relative overflow-hidden">
+        <div className="gsap-cta-banner bg-secondary-500 rounded-3xl p-10 md:p-12 flex flex-col md:flex-row items-center justify-between relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
 
           <div className="flex items-center mb-8 md:mb-0 relative z-10 w-full md:w-auto">
